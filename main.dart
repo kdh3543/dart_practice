@@ -18,7 +18,20 @@ void main() {
   String? test = 'test2';
   test = null;
   test?.isNotEmpty;
+  // 밑에도 가능
   // if(test != null){
   //   test.isNotEmpty;
   // }
+
+  //final -> 한번만 설정할 수 있는 변수
+  final x = 'final';
+  // x = 'first'; -> 에러
+
+  // late (초기 데이터 없이 변수 선언 가능)
+  late final String y;
+  y = 'late';
+  final z;
+  print(y);
+  z = 'name';
+  print(z);
 }
