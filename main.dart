@@ -101,6 +101,7 @@ void main() {
 
   // named argument
   print(multipleString(age: 19, country: 'mexico'));
+  positional('test', 13);
 }
 
 // function
@@ -128,4 +129,45 @@ String multipleString(
 String multipleString2(
     {required String name, required int age, required String country}) {
   return "Hello $name, you are $age, you come from $country";
+}
+
+// positional arguments => 중괄호를 넣으면 named argument
+String sayHello(String name, int age, String country) {
+  return 'hello $name';
+}
+
+// positional arguments는 순서를 맞춰야됨
+// optional positional parameter 표현방법
+// 보통 named argument를 사용
+String positional(String name, int age, [String? country = 'usa']) =>
+    'hello $name, im $age, and from $country';
+
+// ??, ?=
+String capitalizeName(String? name) =>
+    // name != null ? name.toUpperCase() : 'ANON';
+    // =>
+    name?.toUpperCase() ?? 'ANON';
+
+void testFunc() {
+  capitalizeName('test');
+  capitalizeName(null);
+
+  String? name;
+  // name값이 null일때 값 할당
+  name ??= 'test';
+}
+
+// typedef
+// 하나씩 자료형을 정해주지 않고 변수명처럼 자료형을 사용할 수 있음
+typedef ListOfInts = List<int>;
+
+ListOfInts reverseListOfNumbers(ListOfInts list) {
+  var reversed = list.reversed;
+  return reversed.toList();
+}
+
+typedef UserInfo = Map<String, String>;
+
+String mapTest(UserInfo userInfo) {
+  return 'Hello ${userInfo['name']}';
 }
