@@ -21,7 +21,11 @@ void main() {
   // constructor 파라미터가 많을 때는 어떤 파라미터인지 모를 수 있음
   // => named constructor를 사용하면 해결됨
   var named = namedConstructor(name: '테스트 중', xp: 13, country: 'mexico');
-  print(named.country);
+
+  // named
+  namedConstructor.createFirst(name: '테스트 1', xp: 15);
+  // positional
+  namedConstructor.createSecond('테스트 2', 20);
 }
 
 // constructors
@@ -43,4 +47,17 @@ class namedConstructor {
   late String country;
   namedConstructor(
       {required this.name, required this.xp, required this.country});
+  // : --> class의 변수를 초기화시키는 역할
+  // createFirst함수로 변수를 초기화
+
+  // named
+  namedConstructor.createFirst({required String name, required int xp})
+      : this.name = name,
+        this.xp = xp,
+        this.country = 'korea';
+  // positional
+  namedConstructor.createSecond(String name, int xp)
+      : this.name = name,
+        this.xp = xp,
+        this.country = 'usa';
 }
